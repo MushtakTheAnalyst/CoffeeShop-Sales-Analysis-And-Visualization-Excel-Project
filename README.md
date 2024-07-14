@@ -1,4 +1,4 @@
-# CoffeeShop Sales Analysis
+# Coffee Shop Sales Analysis
 Coffee shop sales analysis from 2019 to 2022 dashboard using microsoft excel
 
 
