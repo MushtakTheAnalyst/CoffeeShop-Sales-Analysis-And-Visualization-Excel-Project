@@ -11,10 +11,8 @@ Coffee shop sales analysis from 2019 to 2022 dashboard using microsoft excel
 - [Data Cleaning and Transformation](#data-cleaning-and-transformation)
 - [Data Processing](#data-processing)
 - [Data Analysis](#data-analysis)
-- [Visualization and Dashboard Overview](#visualization-and-dashboard-overview)
-- [Key Insights](#key-insights)
-- [Recommendations](#recommendations)
-- [Conclusion](#conclusion)
+- [Dashboard Overview](#dashboard-overview)
+- [Key Insights and Recommendations](#key-insights-and-recommendations)
 
 
 ## Project Description
@@ -28,129 +26,96 @@ The goal of this project is to analyze coffee order data to find trends in sales
 ## Project Requirement
 The goal of this Excel project is to develop a sales analysis Dashboard from 2019 to 2022, delivering essential insights to clients using datasets with three different tables ie. customers, orders and products. The primary goal was to analyze retail sales data to gain insights that could help improve the coffee shop’s operations and sales strategies. The specific questions I aimed to answer included:
 
-1. How do sales vary monthly, quarterly and yearly basis?
+1. How do sales trend monthly, quarterly and yearly basis?
 2. What is the total revenue for each month, quarters and year?
 3. How do sales vary across different countries?
-4. The top 5 customers with/without loyalty cards
-5. Which products are the best selling in terms of revenue?
-6. How do sales vary by product category and roast type?
+4. The top customers with/without loyalty cards
+5. Which products are the best selling in terms of revenue and quantity?
+6. How do sales vary by product type categories?
 
 
 ## Stakeholders List
-- Business Development Manager
-- Sales Team
-- Marketing Manager
+- Manager
+- Sales Lead
+- Marketing Team
 
 
 ## Data Structure and Source
 The dataset is in Excel (.xlsx) format with 3 different datasets customers, orders, and products table with unique keys like customer id. It contains customers and sales details with fields like coffee type, roast type, quantity, customers details and order details with sales from 2019 to 2022.
 
-The raw dataset is attached in the project here.
+The data are from Kaggle and are available at: https://www.kaggle.com/datasets/mohammadkaiftahir/coffee-orders-data
 
 
 ## Data Cleaning and Transformation
-
-1. The dataset underwent was analyzed in Microsoft Excel to enhance comprehension and identify areas requiring cleaning before analyzing. Notable issues included blank entries and spelling errors. Specifically, the ‘Accident_Severity’ and ‘Junction_Control’ columns included errors such as ‘Fetal’ instead of ‘Fatal’ and ‘Auto traffic sigl’ instead of ‘Auto traffic signal’.
-
-2. The raw data was duplicated into a new sheet, and labeled ‘Data Worksheet.’ The subsequent cleaning procedures were executed on this dedicated sheet, comprising:
- - The Dataset columns were spaced to get a full view
- - Each column was checked for anomalies and any error
- - Blank cells in the columns 'Road_Surface_Conditions' and 'Road_Type' was grouped as "Others" instead of removing the black cells
- - All errors were corrected using the Find and Replace function in Excel
- - Made sure data is consistent and clean with respect to data type, data format and values used
- - Creating 2 new attributes 'Year' and 'Month' were added for logical and easy interpretation of dataset
+I verified the dataset and found no empty cells, except in the email column. These gaps were addressed using the IF and XLOOKUP functions. Additionally, I reformatted the date column for better readability.
 
 
-**Preview of a section of cleaned data sheet -**
-![Screenshot 2024-07-13 164434](https://github.com/user-attachments/assets/cf0d1965-bab9-48cb-9a83-4418a95f8f47)
+![Screenshot 2024-07-16 140806](https://github.com/user-attachments/assets/2e20ed90-afdd-4191-ae06-d37f4d91e2f6)
+
 
 
 ## Data Processing
+To begin with, the dataset was comprised of three tables: one containing order details, another with customer information, and a third focused on product specifics. To enrich the orders table with customer details (name, email, and country),i utilized the XLOOKUP function. Following this, i also used the INDEX MATCH function to pull product-related data, including coffee type, roast type, size, and unit price.
 
-Part of the requested KPIs by the client is to showcase the dashboard in monthly and yearly insight, but from our data, we only have an Accident_Date column with the full date for each data entry. Therefore, there is a need to create month and year columns to get the requested insight. The process of doing this is as follows;
+To determine the total sales value, i calculated it by multiplying the quantity column with the unit price column. The coffee type and roast type information were initially abbreviated, so i created two additional columns to clearly display the full names of these categories. This was achieved using the IF function. Additionally, i reformatted the order date from its original format (e.g., 9/5/2019) to a more readable format (e.g., 5-Sep-2019).
 
-1. Create two blank columns, and name them ‘Month’ and ‘Year’ respectively
+For better clarity, we formatted the size and price columns by adding units—"kg" for size and "$" for price. Converting the dataset into a table format was a critical step, as it simplified data classification and filtering, and enhanced the functionality of pivot tables by allowing for automatic updates and the inclusion of new columns.
 
-2. Use the Excel Text function to extract the month and year from the Accident_Date column.
- - =TEXT(B2, “mmm”) for the newly created ‘Month’ column
- - =TEXT(B2, “yyyy”) for the newly created ‘Year’ column
+With the data now cleaned and prepared, can proceed to the analysis phase.
 
 
-![Screenshot 2024-07-13 134108](https://github.com/user-attachments/assets/c52d4855-3f72-4bbf-8048-94861f2a9978)
+![Screenshot 2024-07-16 141104](https://github.com/user-attachments/assets/71b841a8-148d-4ac0-9a66-009e9893b244)
+
 
 
 ## Data Analysis
 
-#### Primary Key Performance Indicators (KPIs)
+In Excel, pivot tables are incredibly useful for data analysis. We began by creating a pivot table to visualize total sales over time, using dates as rows, coffee types as columns, and sales as the values. This pivot table allowed us to generate a line chart displaying total sales over time. 
 
-- The Excel-Pivot Table was utilized to determine the total number of casualties after the accident in 2021 and 2022.
-- The Accident_Severity is of 3 types- Fatal, Serious and Slight. PivotTable was utilized to determine the total number of casualties for each Accident_Severity type, and the Excel function was used to calculate the percentage of total casualties for each Accident_Severity type.
-- The same PivotTable was used to determine the Vehicle_Type with maximum casualties.
+![Screenshot 2024-07-16 143822](https://github.com/user-attachments/assets/f30c7595-9216-4480-842b-a34e3834181c)
 
-#### Secondary Key Performance Indicators (KPIs)
+We followed a similar approach for the sales by country dashboard. First, we created a pivot table with countries as rows and total sales as values. From this table, we generated a bar chart to show sales by country. Next, we created a pivot table with customer names and the total amount they spent on products. We filtered this table to display only the top 5 customers, allowing us to create a bar chart showing these top customers and their total sales.
 
-- Categorized total casualties based on vehicle types using Excel PivotTable, and casualties for agricultural vehicles, cars, buses, vans, bikes, and others were identified. This breakdown facilitates a detailed understanding of the impact across various vehicle categories.
-- Utilized Excel Pivot Table to compare monthly casualties for the current and previous years. This analysis helps identify patterns, seasonality, and potential contributing factors to accidents with time.
-- Identified and analyzed the road types associated with the highest casualties. Excel Pivot Table was instrumental in summarizing and visualizing this data.
-- Utilized Pivot Table to break down casualties based on road surface conditions. This analysis provides insights into the impact of road conditions on accident severity.
-- Excel PivotTable was employed to analyze the correlation between casualties' location and time of day. Understanding the relationship between these variables contributes to targeted safety measures, especially in specific areas.
+![Screenshot 2024-07-16 143921](https://github.com/user-attachments/assets/c1e74b6c-9a17-48e4-9c3b-2ec4a13575b9)
 
 
-## Visualization and Dashboard Overview
+We then created a timeline to enable the selection of specific time periods for analysis. Additionally, we added three slicers: roast type, size, and loyalty card. These slicers act as data filters. For example, selecting “dark” roast type in the slicer displays data only for that specific roast type. The “loyalty card” information was originally in the "customers" database, so we used XLOOKUP to add this data to the "orders" database, which we used for the dashboard. Then we had created two KPIs to show the total sales and total quantity connecting to the other slicers and charts.
 
-1. Visualization:
-
-A dedicated ‘Data Analysis’ sheet was created for comprehensive data visualization. Excel’s ‘Insert Function’ feature was utilized to pick suitable charts for each table derived from PivotTable data analysis.
-
-- Primary KPIs: Doughnut charts were employed to visualize and represent primary KPIs. The charts were formatted for clarity, ensuring a clean and easily interpretable presentation.
-- Secondary KPIs: Different visualization tools, including Doughnut chart, Treemap, Line graph, and Bar chart, were utilized to convey insights from secondary KPIs.
+![Screenshot 2024-07-16 143954](https://github.com/user-attachments/assets/368028d2-f196-4618-b421-6f95f1001d89)
 
 
-![Screenshot 2024-07-13 164038](https://github.com/user-attachments/assets/e9957059-0808-49cb-9999-981d9c88da7c)
+Initially, the timeline and slicers only affected the line chart showing sales over time. To provide a more comprehensive analysis, we connected these elements to the other charts, ensuring that all visualizations were synchronized and interactive.
 
 
-  
-2. Dashboard:
+## Dashboard Overview
 
-An interactive dashboard with key features to enhance usability and understanding was developed.
+This dashboard reveals several valuable insights about our coffee sales. 
 
-- The timeline button was integrated to visualize road accidents in 2021 and 2022 separately or collectively. This enables a more detailed examination of trends and patterns over each year.
-- Slicer functionality was incorporated into the dashboard, using Rural/Urban categorization as a filter. This allows users to view the dashboard based on specific KPIs and choose between Urban, Rural, or overall perspectives for a targeted analysis.
-- The dashboard is intricately linked with the ‘Data Analysis’ sheet, and providing seamless navigation to internet resources. This integration ensures easy mobility and quick access to related information. This can be interacted with with the use of icons on the left-hand side of the dashboard.
+- **Top Customers**: Allis, Brenn, Terri, Nealson, and Don are our highest spenders. Interestingly, the top four customers for dark roast coffee each spent $179 on this type.
+- **Roast Preferences**: Customers generally spend the most on medium and light roast coffee.
+- **Loyalty Cards**: Customers with loyalty cards tend to spend less, suggesting that our loyalty program may need reevaluation.
+- **Popular Size**: The 2.5kg size is the most popular among our customers.
+- **Geographical Insights**: The United States is a leading market, with significantly higher sales than other countries across all roast types and sizes. However, checking product availability in each country is necessary to validate this observation.
+- **Trends Over Time**: Arabica was highly popular in 2020 and 2021, but its sales saw a significant decline in 2022. Conversely, Excelsa has consistently performed well, showing high peaks in sales throughout the analyzed period.
 
-
-**Final Dashboard:**
-![Screenshot 2024-07-13 164705](https://github.com/user-attachments/assets/9de6a973-9571-4bac-b27f-bc6a4ab24be3)
-
-
-
-## Key Insights
-
-**Total Casualties Analysis:** The dashboard reveals an alarming 417,883 casualties occurred due to accidents over the two-year period.
-
-**Peak Months:** Casualties were slightly higher in 2021 compared to 2022. The highest number of casualties occurred in October and November in both years, while the lowest casualties were in January and February.
-
-**Casualties by Vehicle Type:** Car accidents accounted for the majority of casualties, contributing to 79.8% of the total. Casualties were minimal in accidents involving other vehicle types.
-
-**Casualties by Accident Severity:** Slight severity accidents accounted for the majority of casualties (84.1%), while fatal severity casualties were only 1.7%.
-
-**Road Type Analysis:** The highest number of casualties occurred on single carriageway roads (309.7K), and the lowest on slip roads (4.7K).
-
-**Casualties Distribution by Road Surface:** The majority of casualties (66.9%) occurred on dry road surfaces.
-
-**Casualties Relation by Area/Location:** Urban areas accounted for 61% of the casualties after accidents.
-
-**Casualties Distribution by Light Condition:** 73% of casualties occurred during daylight conditions.
+![Screenshot 2024-07-16 144100](https://github.com/user-attachments/assets/1507eb27-fe2c-455d-960d-078fcea12d96)
 
 
-## Recommendations
+## Key Insights and Recommendations
 
-1. **Focus on High-Risk Periods:** By comparing casualty trends between the current and previous years on a monthly basis, the dashboard identifies critical periods in October and November. Traffic police and other stakeholders should increase safety measures and monitoring during these high-risk months.
+- **Excelsa Leads the Way in Revenue Generation**
+Excelsa coffee takes the top spot in revenue generation, showcasing its significant impact on the coffee industry.
 
-2. **Target Car Drivers:** Since car drivers account for the bulk of casualties, they should be the focus of awareness campaigns, strict monitoring, and periodic check-ups on safe driving.
+- **"Light" Roast Coffee Emerges as Revenue Leader**
+Among various roast types, "Light" roast coffee stands out as the leader in revenue generation.
 
-3. **Improve Single Carriageway Roads:** Extra safety measures should be implemented on single carriageway roads, and wherever possible, these roads should be upgraded to double lanes.
+### Coffee Sales by Country:
+- **🇮🇪 Ireland**: Liberica coffee outperforms other types in revenue in Ireland.
+- **🇺🇸 United States**: Arabica coffee secures the top spot for revenue generation in the United States.
+- **🇬🇧 United Kingdom**: Excelsa coffee stands out as the revenue leader in the United Kingdom.
 
-4. **Enhance Road Surface Conditions:** Understanding casualty distribution based on different road surface conditions helps pinpoint areas where road maintenance and surface improvements are essential.
+### Sales Soar in 2021 with a 13.6% Surge
+While 2019 and 2020 saw nearly identical sales figures, 2021 witnessed a significant boost with a 13.6% increase compared to the previous year, reflecting a thriving coffee market.
 
-5. **Interventions in Urban Areas:** Urban areas should be targeted for specific interventions to improve road safety, particularly during daylight hours.
+These insights can help us make informed decisions about the product offerings, marketing strategies, and customer engagement initiatives.
+
