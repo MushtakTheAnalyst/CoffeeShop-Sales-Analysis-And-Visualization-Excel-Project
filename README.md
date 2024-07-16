@@ -18,44 +18,34 @@ Coffee shop sales analysis from 2019 to 2022 dashboard using microsoft excel
 
 
 ## Project Description
-Road safety is a significant concern impacting communities worldwide. In this project, I have developed a Road Accident Analytics Dashboard, a robust tool designed to analyze and visualize road accident data for the years 2021 and 2022. This Excel-based dashboard provides stakeholders with critical insights, enabling them to make data-driven decisions and promote safer roads.
+The goal of this project is to analyze and visualize coffee shop's sales data from the year 2019 to 2022 using microsoft excel. This Excel-based dashboard provides stakeholders with critical insights, enabling them to drive smarter business decisions.
 
 
 ## Project Goal
-The goal of this project is to analyze traffic accident data and identify key trends and insights related to casualties. By doing so, the project aims to inform policy and decision-making related to road safety, and ultimately help reduce the number of casualties caused by accidents.
+The goal of this project is to analyze coffee order data to find trends in sales over time and by different coffee bean types, sales, by country, and we can gain some insights into who our top customers are.
 
 
 ## Project Requirement
-The goal of this Excel project is to develop a Road Accident Dashboard for the years 2021 and 2022, delivering essential insights to clients using a dataset containing 21 fields and 307,000 records. The insights will be represented through two categories of KPIs: Primary KPIs and Secondary KPIs.
+The goal of this Excel project is to develop a sales analysis Dashboard from 2019 to 2022, delivering essential insights to clients using datasets with three different tables ie. customers, orders and products. The primary goal was to analyze retail sales data to gain insights that could help improve the coffee shop’s operations and sales strategies. The specific questions I aimed to answer included:
 
-#### Primary KPIs:
-- Total casualties post-accident
-- Total casualties by accident severity and their percentage, and vehicle type maximum casualties.
-
-#### Secondary KPIs:
-- Total casualties categorized by vehicle type
-- Monthly trend comparing casualties for the current and previous years
-- Maximum casualties by road type
-- Distribution of total casualties by road surface
-- Correlation between casualties based on Area/Location and Day/Night
+1. How do sales vary monthly, quarterly and yearly basis?
+2. What is the total revenue for each month, quarters and year?
+3. How do sales vary across different countries?
+4. The top 5 customers with/without loyalty cards
+5. Which products are the best selling in terms of revenue?
+6. How do sales vary by product category and roast type?
 
 
 ## Stakeholders List
-- Ministry of Transport
-- Road Transport Department
-- Police Force
-- Emergency Service Department
-- Road Safety Corps
-- Transport Operators
-- Traffic Management Agencies
-- Public
-- Media
+- Business Development Manager
+- Sales Team
+- Marketing Manager
 
 
 ## Data Structure and Source
-The dataset is in Excel (.xlsx) format with 307,974 rows and 21 columns. It contains accident details with fields like accident_index (unique for every data entry recorded), accident date, location details, accident_severity, number_of_casualties, road_type, vehicle_type, and others.
+The dataset is in Excel (.xlsx) format with 3 different datasets customers, orders, and products table with unique keys like customer id. It contains customers and sales details with fields like coffee type, roast type, quantity, customers details and order details with sales from 2019 to 2022.
 
-The dataset can be found [here](https://docs.google.com/spreadsheets/d/1R_uaoZL18nRbqC_MULVne90h3SdRbAyn/edit?usp=sharing&ouid=115582851948476680193&rtpof=true&sd=true)
+The raw dataset is attached in the project here.
 
 
 ## Data Cleaning and Transformation
